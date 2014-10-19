@@ -1,0 +1,541 @@
+﻿<templates>
+
+<dm_action>
+  <name>ACTION_CLARIFY</name>
+  <response>
+    <rule_id>R0.0</rule_id>
+    <segment>
+      <text>شنو</text>
+    </segment>
+    <segment>
+      <action>Display_Previous_Shorter</action>
+    </segment>
+   </response>
+
+</dm_action>
+
+<dm_action>
+  <name>ACTION_CONFIRM</name>
+  <response>
+    <rule_id>R1.0</rule_id>
+<!-- score 1 -->
+    <segment>
+      <text>سمعتك تقول ,</text>
+    </segment>
+    <segment>
+      <action>Display_Sentence</action>
+	</segment>
+    <segment>
+      <text>صح</text>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R1.0</rule_id>
+<!-- score 2 -->
+    <segment>
+      <text>إنت قلت</text>
+    </segment>
+    <segment>
+      <action>Display_Sentence</action>
+     </segment>
+  </response>
+
+  <response>
+    <rule_id>R1.0</rule_id>
+<!-- score 3 -->
+    <segment>
+      <text>سمعتك تقول ,</text>
+    </segment>
+    <segment>
+      <action>Display_Sentence</action>
+          </segment>
+    <segment>
+      <text>شنو صحيح</text>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R1.0</rule_id>
+<!-- score 3 -->
+    <segment>
+      <text>خليني إتأكد آني سمعتك صح . إنت قلت</text>
+    </segment>
+    <segment>
+      <action>Display_Sentence</action>
+    </segment>
+    <segment>
+      <text>ممكن تقلي إي لو لا</text>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R1.0</rule_id>
+<!-- score 4 -->
+    <segment>
+      <text>ما متأكد آني سمعتك بوضوح . إنت قلت</text>
+    </segment>
+    <segment>
+      <action>Display_Sentence</action>
+     </segment>
+    <segment>
+      <text>رجاءا قلي إي لو لا</text>
+    </segment>
+  </response>
+
+</dm_action>
+
+<dm_action>
+  <name>ACTION_CONFIRM_ATTRIBUTE</name>
+  <response>
+    <target_attr>ERROR_SEGMENT_ATTR_SPELLING</target_attr>
+    <rule_id>R2.0</rule_id>
+    <segment>
+       <text>إنت قلت</text>
+    </segment>
+    <segment>
+      <action>Display_Spelling</action>
+    </segment>
+    <segment>
+     <text>هذا صحيح</text>
+    </segment>
+  </response>
+
+  <response>
+    <target_attr>ERROR_SEGMENT_ATTR_SPELLING</target_attr>
+    <rule_id>R2.0</rule_id>
+    <segment>
+      <text>سمعتك تقول ,</text>
+    </segment>
+    <segment>
+      <action>Display_Spelling</action>
+    </segment>
+    <segment>
+      <text>هذا صحيح</text>
+    </segment>
+  </response>
+
+  <response>
+    <target_attr>ERROR_SEGMENT_ATTR_SPELLING</target_attr>
+    <rule_id>R2.0</rule_id>
+    <segment>
+      <text>ما متأكد آني سمعتك بوضوح . إنت قلت</text>
+    </segment>
+    <segment>
+      <action>Display_Spelling</action>
+    </segment>
+    <segment>
+      <text>رجاءا قلي إي لو لا</text>
+    </segment>
+  </response>
+
+  <response>
+    <target_attr>ERROR_SEGMENT_ATTR_NAME</target_attr>
+    <rule_id>R2.1</rule_id>
+<!-- score 1 -->
+    <segment>
+      <text>هل تقصد إسم لمن قلت</text>
+    </segment>
+    <segment>
+      <action>Play_Audio</action>
+    </segment>
+  </response>
+</dm_action>
+
+<dm_action>
+  <name>ACTION_ASK_REPHRASE_PART</name>
+  <response>
+    <rule_id>R3.0</rule_id>
+<!--score 1 -->
+    <segment>
+     <text>ما إفتهمت لمن قلت</text>
+    </segment>
+    <segment>
+      <action>Play_Audio</action>
+    </segment>
+    <segment>
+      <text>رجاءا إنطيني كلمة او جملة مختلفة</text>
+     </segment>
+  </response>
+
+  <response>
+    <rule_id>R3.0</rule_id>
+<!--score 2 -->
+    <segment>
+      <text>عندي صعوبة في فهم</text>
+    </segment>
+    <segment>
+      <action>Play_Audio</action>
+    </segment>
+    <segment>
+     <text>رجاءا إنطيني جملة او كلمة مختلفة</text>
+     </segment>
+  </response>
+
+  <response>
+    <rule_id>R3.0</rule_id>
+<!--score 2 -->
+    <segment>
+      <text>رجاءا قلي كلمة او جملة مختلفة لهايا</text>
+    </segment>
+    <segment>
+      <action>Play_Audio</action>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R3.0</rule_id>
+<!--score 4 -->
+    <segment>
+      <text>رجاءا قلي كلمة او جملة مختلفة لهايا</text>
+    </segment>
+    <segment>
+      <action>Play_Audio</action>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R3.0</rule_id>
+<!--score 4 -->
+    <segment>
+      <text>رجاءا إنطيني جملة او كلمة مختلفة لهايا</text>
+    </segment>
+    <segment>
+      <action>Play_Audio</action>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R3.0</rule_id>
+    <segment>
+      <text>إنطيني غير كلمة او جملة</text>
+    </segment>
+    <segment>
+      <action>Play_Audio</action>
+    </segment>
+  </response>
+
+
+  <response>
+    <rule_id>R3.1</rule_id>
+    <segment>
+      <text>ما دأعرف شلون أترجم هالكلمة</text>
+    </segment>
+    <segment>
+      <action>Display_Error_Words</action>
+    </segment>
+    <segment>
+     <text>رجاءا إنطيني كلمة بديلة</text>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R3.1</rule_id>
+    <segment>
+      <text>ما دأعرف شلون أترجم هالكلمة</text>
+    </segment>
+    <segment>
+      <action>Display_Error_Words</action>
+    </segment>
+    <segment>
+     <text>رجاءا إنطيني كلمة بديلة لهايا</text>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R3.2</rule_id>
+    <segment>
+      <text>ما أقدر أترجم هالكلمة</text>
+    </segment>
+    <segment>
+      <action>Display_Error_Words</action>  
+    </segment>
+    <segment>
+     <text>رجاءا إنطيني كلمة مختلفة لهايا</text>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R3.3</rule_id>
+    <segment>
+      <text>ما متأكد شلون أترجم هالكلمة</text>
+    </segment>
+    <segment>
+      <action>Display_Error_Words</action>
+    </segment>
+    <segment>
+     <text>رجاءا قول كلمة بديلة لهايا</text>
+    </segment>
+  </response>
+
+</dm_action>
+
+<dm_action>
+  <name>ACTION_REJECT</name>
+  <response>
+    <rule_id>R4.0</rule_id>
+<!--score 1 -->
+    <segment>
+      <text>رجاءا عيد صياغة الجملة كلها مرة لخ</text>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R4.0</rule_id>
+<!--score 2 -->
+    <segment>
+      <text>آني دأواجه صعوبة . رجاءا عيد صياغة الجملة كلها وأستخدم غير كلمات</text>
+    </segment>
+  </response>
+ 
+  <response>
+    <rule_id>R4.0</rule_id>
+<!--score 3 -->
+    <segment>
+      <text>رجاءا قول هالجملة بغير كلمات</text>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R4.0</rule_id>
+<!--score 2 -->
+    <segment>
+      <text>آني دأواجه صعوبة . رجاءا عيد صياغة الجملة كلها وإنطيني غير كلمة</text>
+    </segment>
+  </response>
+
+</dm_action>
+
+<dm_action>
+  <name>ACTION_SPELL</name>
+  <response>
+    <rule_id>R5.0</rule_id>
+<!--score 1 -->
+    <segment>
+      <text>إعتقد آني سمعت لمن إنت قلت</text>
+    </segment>
+    <segment>
+      <action>Play_Audio</action>
+    </segment>
+    <segment>
+      <text>رجاءا إتهجالي الإسم مرة لخ</text>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R5.1</rule_id>
+<!-- score 1 -->
+    <segment>
+     <text>هذا اللي سمعتة</text>
+    </segment>
+    <segment>
+      <action>Display_Spelling</action>
+    </segment>
+    <segment>
+      <text>إذا هذا صحيح قلي إي , إذا غلط رجاءا إتهجا مرة لخ</text>
+     </segment>
+  </response>
+
+  <response>
+    <rule_id>R5.1</rule_id>
+<!-- score 4 -->
+    <segment>
+       <text>خلي نشوف إذا إنت تهجيت الجملة بصورة صحيحة . آني سمعت :</text>
+    </segment>
+    <segment>
+      <action>Display_Spelling</action>
+    </segment>
+    <segment>
+     <text>إذا صحيح قلي إي , إذا غلط رجاءا إتهجا مرة لخ</text>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R5.2</rule_id>
+<!-- score 3 -->
+    <segment>
+      <text>زين , رجاءا اتهجالي هذا الإسم</text>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R5.3</rule_id>
+<!-- score 1 -->
+    <segment>
+      <text>رجاءا اتهجالي</text>
+    </segment>
+    <segment>
+      <action>Play_Audio</action>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R5.3</rule_id>
+<!-- score 2 -->
+    <segment>
+      <text>زين , رجاءا اتهجالي هالإسم</text>
+    </segment>
+    <segment>
+      <action>Play_Audio</action>
+    </segment>
+  </response>
+
+</dm_action>
+
+<dm_action>
+  <name>ACTION_DISAMBIGUATE</name>
+
+  <response>
+    <rule_id>R6.0</rule_id>
+    <segment>
+      <text>إنت تقصد</text>
+    </segment>
+    <segment>
+      <action>Display_Ambiguous_Words_Description</action>
+      <prefix>مثل</prefix>
+      <connector>, أو ,</connector>
+    </segment>
+    <segment>
+      <text>رجاءا قول</text>
+    </segment>
+    <segment>
+      <action>Display_Options</action>
+      <connector>, أو ,</connector>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R6.0</rule_id>
+    <segment>
+      <text>للتوضيح , إنت تقصد</text>
+    </segment>
+    <segment>
+      <action>Display_Ambiguous_Words_Description</action>
+      <prefix>مثل</prefix>
+      <connector>, أو ,</connector>
+    </segment>
+    <segment>
+      <text>رجاءا قول</text>
+    </segment>
+    <segment>
+      <action>Display_Options</action>
+      <connector>, أو ,</connector>
+    </segment>
+  </response>
+
+</dm_action>
+
+<dm_action>
+  <name>ACTION_DISAMBIGUATE_MT</name>
+
+  <response>
+    <rule_id>R6.1</rule_id>
+    <segment>
+      <text>سمعتك تقول ,</text>
+    </segment>
+    <segment>
+      <action>Play_Audio</action>
+    </segment>
+    <segment>
+      <text>إنت تقصد</text>
+    </segment>
+    <segment>
+      <action>Display_Ambiguous_Words_Description</action>
+      <prefix>مثل</prefix>
+      <connector>, أو ,</connector>
+    </segment>
+    <segment>
+      <text>رجاءا قول</text>
+    </segment>
+    <segment>
+      <action>Display_Options</action>
+      <connector>, أو ,</connector>
+    </segment>
+  </response>
+
+</dm_action>
+
+<dm_action>
+  <name>ACTION_ASK_REPEAT_PART</name>
+  <response>
+    <rule_id>R7.0</rule_id>
+    <segment>
+      <text>رجاءا أعد</text>
+    </segment>
+    <segment>
+      <action>Play_Audio</action>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R7.1</rule_id>
+    <segment>
+      <text>رجاءا , قولي الكلمات التلاثه الاولى مرة لخ</text>
+    </segment>
+  </response>
+
+</dm_action>
+
+<dm_action>
+  <name>ACTION_TRANSLATE</name>
+
+  <response>
+    <rule_id>R8.0</rule_id>
+    <segment>
+      <action>Translate_All</action>
+    </segment>
+  </response>
+
+</dm_action>
+
+<dm_action>
+  <name>ACTION_PREAMBLE_SORRY</name>
+
+  <response>
+    <rule_id>R9.0</rule_id>
+<!--score 3 -->
+    <segment>
+      <text>زين , خلي نجرب مرة لخ</text>
+    </segment>
+  </response>
+   
+
+  <response>
+    <rule_id>R9.0</rule_id>
+<!--score 4 -->
+    <segment>
+      <text>زين , خلي نجرب بعد مرة لخ</text>
+    </segment>
+  </response>
+
+  <response>
+    <rule_id>R9.0</rule_id>
+<!--score 1 -->
+    <segment>
+      <text>زين , خلي نجرب مرة لخ</text>
+    </segment>
+  </response>
+
+</dm_action>
+
+    <dm_action>
+        <name>ACTION_RESTART</name>
+        <response>
+            <rule_id>R10.0</rule_id>
+            <segment>
+                <action>Restart</action>
+            </segment>
+        </response>
+    </dm_action>
+
+    <dm_action>
+        <name>ACTION_MOVE_ON</name>
+        <response>
+            <rule_id>R11.0</rule_id>
+            <segment>
+                <action>Move_On</action>
+            </segment>
+        </response>
+    </dm_action>
+
+</templates>

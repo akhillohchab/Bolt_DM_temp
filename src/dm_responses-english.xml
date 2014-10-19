@@ -1,0 +1,682 @@
+<templates>
+
+    <dm_action>
+        <name>ACTION_CLARIFY</name>
+        <response>
+            <rule_id>R0.0</rule_id>
+            <segment>
+                <action>Display_Previous_Shorter</action>
+            </segment>
+            <segment>
+                <text>what?</text>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R0.1</rule_id>
+            <segment>
+                <action>Display_Previous_Shorter</action>
+            </segment>
+            <segment>
+                <text>where?</text>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R0.2</rule_id>
+            <segment>
+                <action>Display_Previous_Shorter</action>
+            </segment>
+            <segment>
+                <text>whom?</text>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R0.3</rule_id>
+            <segment>
+                <action>Display_Previous_Shorter</action>
+            </segment>
+            <segment>
+                <text>who?</text>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R0.4</rule_id>
+            <segment>
+                <action>Display_Previous_Shorter</action>
+            </segment>
+            <segment>
+                <text>do what?</text>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R0.5</rule_id>
+            <segment>
+                <text>What kind of</text>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+            <segment>
+                <action>Display_Headword</action>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R0.6</rule_id>
+            <segment>
+                <text>Which</text>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+            <segment>
+                <action>Display_Headword</action>
+            </segment>
+        </response>
+
+    </dm_action>
+
+    <dm_action>
+        <name>ACTION_CONFIRM</name>
+        <response>
+            <rule_id>R1.0</rule_id>
+            <segment>
+                <text>Did you say,</text>
+            </segment>
+            <segment>
+                <action>Display_Sentence</action>
+                <tts_feature>Slow_Speed</tts_feature>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R1.0</rule_id>
+            <segment>
+                <text>I heard you say,</text>
+            </segment>
+            <segment>
+                <action>Display_Sentence</action>
+                <tts_feature>Slow_Speed</tts_feature>
+            </segment>
+            <segment>
+                <text>Is that correct?</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R1.0</rule_id>
+            <segment>
+                <text>Let's make sure I heard you right. Did you say,</text>
+            </segment>
+            <segment>
+                <action>Display_Sentence</action>
+                <tts_feature>Slow_Speed</tts_feature>
+            </segment>
+            <segment>
+                <text>Please say yes or no.</text>
+            </segment>
+        </response>
+
+    </dm_action>
+
+    <dm_action>
+        <name>ACTION_CONFIRM_ATTRIBUTE</name>
+        <response>
+            <target_attr>ERROR_SEGMENT_ATTR_SPELLING</target_attr>
+            <rule_id>R2.0</rule_id>
+            <segment>
+                <text>You said</text>
+            </segment>
+            <segment>
+                <action>Display_Spelling</action>
+            </segment>
+            <segment>
+                <text>Is that right?</text>
+            </segment>
+        </response>
+
+        <response>
+            <target_attr>ERROR_SEGMENT_ATTR_SPELLING</target_attr>
+            <rule_id>R2.0</rule_id>
+            <segment>
+                <text>I heard you say</text>
+            </segment>
+            <segment>
+                <action>Display_Spelling</action>
+            </segment>
+            <segment>
+                <text>Is that correct?</text>
+            </segment>
+        </response>
+
+        <response>
+            <target_attr>ERROR_SEGMENT_ATTR_SPELLING</target_attr>
+            <rule_id>R2.0</rule_id>
+            <segment>
+                <text>Did you say,</text>
+            </segment>
+            <segment>
+                <action>Display_Spelling</action>
+            </segment>
+            <segment>
+                <text>Please say yes or no.</text>
+            </segment>
+        </response>
+
+        <response>
+            <target_attr>ERROR_SEGMENT_ATTR_NAME</target_attr>
+            <rule_id>R2.1</rule_id>
+            <segment>
+                <text>I think I heard a name when you said</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+            <segment>
+                <text>Is that right?</text>
+            </segment>
+        </response>
+
+        <response>
+            <target_attr>ERROR_SEGMENT_ATTR_NAME</target_attr>
+            <rule_id>R2.1</rule_id>
+            <segment>
+                <text>I think this is a name:</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+            <segment>
+                <text>Is that right?</text>
+            </segment>
+        </response>
+
+    </dm_action>
+
+    <dm_action>
+        <name>ACTION_ASK_REPHRASE_PART</name>
+
+        <response>
+            <rule_id>R3.0</rule_id>
+            <segment>
+                <text>I didn't understand when you said:</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+            <segment>
+                <text>Please give me another word or phrase for it.</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R3.0</rule_id>
+            <segment>
+                <text>I'm having trouble understanding:</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+            <segment>
+                <text>Please say a different word or phrase for it.</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R3.0</rule_id>
+            <segment>
+                <text>Please tell me another word or phrase for this:</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R3.0</rule_id>
+            <segment>
+                <text>Please say a different word or phrase for:</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R3.0</rule_id>
+            <segment>
+                <text>Please give me a different word or phrase for this:</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R3.1</rule_id>
+            <segment>
+                <text>I don't know how to translate:</text>
+            </segment>
+            <segment>
+                <action>Display_Error_Words</action>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+            <segment>
+                <text>Please give me another word or phrase for it.</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R3.2</rule_id>
+            <segment>
+                <text>I can't translate:</text>
+            </segment>
+            <segment>
+                <action>Display_Error_Words</action>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+            <segment>
+                <text>Can you give me another word or phrase?</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R3.3</rule_id>
+            <segment>
+                <text>I'm not sure how to translate:</text>
+            </segment>
+            <segment>
+                <action>Display_Error_Words</action>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+            <segment>
+                <text>Can you provide me with another word or phrase?</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R3.4</rule_id>
+            <segment>
+                <text>I didn't understand when you said:</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+            <segment>
+                <text>Please give me another word or phrase for it.</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R3.4</rule_id>
+            <segment>
+                <text>I didn't understand when you said:</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+            <segment>
+                <text>Please rephrase or try again.</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R3.4</rule_id>
+            <segment>
+                <text>I'm having trouble understanding:</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+            <segment>
+                <text>Please say a different word or phrase for it.</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R3.4</rule_id>
+            <segment>
+                <text>I'm having trouble understanding:</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+            <segment>
+                <text>Please rephrase or try again.</text>
+            </segment>
+        </response>
+
+    </dm_action>
+
+    <dm_action>
+        <name>ACTION_REJECT</name>
+        <response>
+            <rule_id>R4.0</rule_id>
+            <segment>
+                <text>Please rephrase the entire sentence.</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R4.0</rule_id>
+            <segment>
+                <text>I'm having trouble. Please rephrase the entire sentence using different words.</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R4.0</rule_id>
+            <segment>
+                <text>Please say that sentence using different words.</text>
+            </segment>
+        </response>
+
+    </dm_action>
+
+    <dm_action>
+        <name>ACTION_SPELL</name>
+        <response>
+            <rule_id>R5.0</rule_id>
+            <segment>
+                <text>I think I heard a name when you said this:</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+            <segment>
+                <text>Please spell that name.</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R5.1</rule_id>
+            <segment>
+                <text>Here is what I heard:</text>
+            </segment>
+            <segment>
+                <action>Display_Spelling</action>
+            </segment>
+            <segment>
+                <text>If this is right, say yes. Otherwise, please spell it again.</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R5.1</rule_id>
+            <segment>
+                <text>I heard:</text>
+            </segment>
+            <segment>
+                <action>Display_Spelling</action>
+            </segment>
+            <segment>
+                <text>If this is right, say yes. Otherwise, please spell it again.</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R5.2</rule_id>
+            <segment>
+                <text>OK, please spell that name</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R5.3</rule_id>
+            <segment>
+                <text>Please spell</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+        </response>
+
+    </dm_action>
+
+    <dm_action>
+        <name>ACTION_DISAMBIGUATE</name>
+
+        <response>
+            <rule_id>R6.0</rule_id>
+            <segment>
+                <text>Did you mean</text>
+            </segment>
+            <segment>
+                <action>Display_Ambiguous_Words_Description</action>
+                <prefix>as in</prefix>
+                <connector>, or,</connector>
+            </segment>
+            <segment>
+                <text>? Please say</text>
+            </segment>
+            <segment>
+                <action>Display_Options</action>
+                <connector>, or,</connector>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R6.0</rule_id>
+            <segment>
+                <text>Just to clarify, did you mean</text>
+            </segment>
+            <segment>
+                <action>Display_Ambiguous_Words_Description</action>
+                <prefix>as in</prefix>
+                <connector>, or,</connector>
+            </segment>
+            <segment>
+                <text>? Please say</text>
+            </segment>
+            <segment>
+                <action>Display_Options</action>
+                <connector>, or,</connector>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R6.0</rule_id>
+            <segment>
+                <text>To clarify, did you mean</text>
+            </segment>
+            <segment>
+                <action>Display_Ambiguous_Words_Description</action>
+                <prefix>as in</prefix>
+                <connector>, or,</connector>
+            </segment>
+            <segment>
+                <text>? Please say</text>
+            </segment>
+            <segment>
+                <action>Display_Options</action>
+                <connector>, or,</connector>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R6.0</rule_id>
+            <segment>
+                <text>Could you clarify</text>
+            </segment>
+            <segment>
+                <action>Display_Ambiguous_Words_Description</action>
+                <prefix>as in</prefix>
+                <connector>, or,</connector>
+            </segment>
+            <segment>
+                <text>? Please say</text>
+            </segment>
+            <segment>
+                <action>Display_Options</action>
+                <connector>, or,</connector>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+        </response>
+
+    </dm_action>
+
+    <dm_action>
+        <name>ACTION_DISAMBIGUATE_MT</name>
+
+        <response>
+            <rule_id>R6.1</rule_id>
+            <segment>
+                <text>I heard you say</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+            <segment>
+                <text>. Did you mean,</text>
+            </segment>
+            <segment>
+                <action>Display_Ambiguous_Words_Description</action>
+                <prefix>as in</prefix>
+                <connector>, or,</connector>
+            </segment>
+            <segment>
+                <text>? Please say</text>
+            </segment>
+            <segment>
+                <action>Display_Options</action>
+                <connector>, or,</connector>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R6.1</rule_id>
+            <segment>
+                <text>I'm not sure how to best translate</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+            <segment>
+                <text>. Did you mean,</text>
+            </segment>
+            <segment>
+                <action>Display_Ambiguous_Words_Description</action>
+                <prefix>as in</prefix>
+                <connector>, or,</connector>
+            </segment>
+            <segment>
+                <text>? Please say</text>
+            </segment>
+            <segment>
+                <action>Display_Options</action>
+                <connector>, or,</connector>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R6.1</rule_id>
+            <segment>
+                <action>Play_Audio</action>
+            </segment>
+            <segment>
+                <text>can be translated in multiple ways.</text>
+            </segment>
+            <segment>
+                <text>Did you mean,</text>
+            </segment>
+            <segment>
+                <action>Display_Ambiguous_Words_Description</action>
+                <prefix>as in</prefix>
+                <connector>, or,</connector>
+            </segment>
+            <segment>
+                <text>? Please say</text>
+            </segment>
+            <segment>
+                <action>Display_Options</action>
+                <connector>, or,</connector>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+        </response>
+
+    </dm_action>
+
+    <dm_action>
+        <name>ACTION_ASK_REPEAT_PART</name>
+        <response>
+            <rule_id>R7.0</rule_id>
+            <segment>
+                <text>Please repeat</text>
+            </segment>
+            <segment>
+                <action>Play_Audio</action>
+                <tts_feature>Emphasize</tts_feature>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R7.1</rule_id>
+            <segment>
+                <text>Please tell me the first three words again.</text>
+            </segment>
+        </response>
+
+    </dm_action>
+
+    <dm_action>
+        <name>ACTION_TRANSLATE</name>
+
+        <response>
+            <rule_id>R8.0</rule_id>
+            <segment>
+                <action>Translate_All</action>
+            </segment>
+        </response>
+
+    </dm_action>
+
+    <dm_action>
+        <name>ACTION_PREAMBLE_SORRY</name>
+
+        <response>
+            <rule_id>R9.0</rule_id>
+            <segment>
+                <text>OK, let me try that again.</text>
+            </segment>
+        </response>
+
+        <response>
+            <rule_id>R9.0</rule_id>
+            <segment>
+                <text>OK, let's try that one more time.</text>
+            </segment>
+        </response>
+
+    </dm_action>
+
+    <dm_action>
+        <name>ACTION_RESTART</name>
+        <response>
+            <rule_id>R10.0</rule_id>
+            <segment>
+                <action>Restart</action>
+            </segment>
+        </response>
+    </dm_action>
+
+    <dm_action>
+        <name>ACTION_MOVE_ON</name>
+        <response>
+            <rule_id>R11.0</rule_id>
+            <segment>
+                <action>Move_On</action>
+            </segment>
+        </response>
+    </dm_action>
+
+</templates>

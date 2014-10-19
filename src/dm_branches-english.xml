@@ -1,0 +1,194 @@
+<branches>
+  <dm_branch>
+      <description>if we want to start over</description>
+      <function>isRestart</function>
+      <first_action>ACTION_RESTART;R10.0</first_action>
+  </dm_branch>
+
+  <dm_branch>
+      <description>if we want to move on and translate existing utterance</description>
+      <function>isMoveOn</function>
+      <first_action>ACTION_MOVE_ON;R11.0</first_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if this is the last turn</description>
+    <function>isLastTurn</function>
+    <first_action>ACTION_TRANSLATE;R8.0</first_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if error.getErrorType() == ERROR_SEGMENT_MT and spelling is not confirmed</description>
+    <function>isMtErrorWithNonConfirmedSpelling</function>
+    <first_action>ACTION_SPELL;R5.1</first_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isMtOov()==true</description>
+    <function>isMtOov</function>
+    <first_action>ACTION_ASK_REPHRASE_PART;R3.1</first_action>
+    <repeat_action>ACTION_SPELL;R5.3</repeat_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isMtWordDropped()==true</description>
+    <function>isMtWordDropped</function>
+    <first_action>ACTION_ASK_REPHRASE_PART;R3.2</first_action>
+    <repeat_action>ACTION_SPELL;R5.3</repeat_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isMtQuestionable()==true</description>
+    <function>isMtQuestionable</function>
+    <first_action>ACTION_ASK_REPHRASE_PART;R3.3</first_action>
+    <repeat_action>ACTION_SPELL;R5.3</repeat_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isMtAmbiguous()==true</description>
+    <function>isMtAmbiguous</function>
+    <first_action>ACTION_DISAMBIGUATE_MT;R6.1</first_action>
+    <repeat_action>ACTION_ASK_REPHRASE_PART;R3.3</repeat_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if the user confirmed the entire utterance</description>
+    <function>isUtteranceConfirmed</function>
+    <first_action>ACTION_TRANSLATE;R8.0</first_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if the user rejected the entire utterance</description>
+    <function>isUtteranceRejected</function>
+    <first_action>ACTION_REJECT;R4.0</first_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if there are no errors left, and the resolved error is a homophone error</description>
+    <function>isResolvedErrorHomophoneError</function>
+    <first_action>ACTION_TRANSLATE;R8.0</first_action>
+  </dm_branch>
+
+<!--
+  <dm_branch>
+    <description>if there are no errors left, and turn is 0 or 1</description>
+    <function>isNoErrorLeftInTheFirstTwoTurns</function>
+    <first_action>ACTION_CONFIRM;R1.0</first_action>
+  </dm_branch>
+-->
+
+  <dm_branch>
+    <description>if there are no errors left</description>
+    <function>isNoErrorLeft</function>
+    <first_action>ACTION_TRANSLATE;R8.0</first_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if there are too many errorful words</description>
+    <function>doesSentenceHaveTooManyErrors</function>
+    <first_action>ACTION_REJECT;R4.0</first_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isAsrAmbiguous()==true</description>
+    <function>isAsrAmbiguous</function>
+    <first_action>ACTION_DISAMBIGUATE;R6.0</first_action>
+    <repeat_action>ACTION_ASK_REPHRASE_PART;R3.0</repeat_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isAsrOov()==true and spelling is not confirmed</description>
+    <function>isAsrOovWithNonConfirmedSpelling</function>
+    <first_action>ACTION_SPELL;R5.1</first_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isAsrOov()==true and name is confirmed</description>
+    <function>isAsrOovWithConfirmedName</function>
+    <first_action>ACTION_SPELL;R5.2</first_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isAsrOov()==true and name is rejected</description>
+    <function>isAsrOovWithRejectedName</function>
+    <first_action>ACTION_ASK_REPHRASE_PART;R3.4</first_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isAsrOov()==true and neTag==NONE</description>
+    <function>isAsrNonNameOov</function>
+    <first_action>ACTION_ASK_REPHRASE_PART;R3.4</first_action>
+    <repeat_action>ACTION_SPELL;R5.3</repeat_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isAsrOov()==true and neTag==HUMAN</description>
+    <function>isAsrNameOov</function>
+    <first_action>ACTION_SPELL;R5.0</first_action>
+    <repeat_action>ACTION_ASK_REPHRASE_PART;R3.0</repeat_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isAsrOov()==true, name is not confirmed or rejected, and turn is 0 or 1</description>
+    <function>isAsrOovWithNotConfirmedName</function>
+    <first_action>ACTION_CONFIRM_ATTRIBUTE;R2.1</first_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isAsrOov()==false, error is at the beginning of the sentence</description>
+    <function>isErrorAtTheBeginning</function>
+    <first_action>ACTION_ASK_REPHRASE_PART;R3.0</first_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isAsrOov()==false, depTag==NMOD and posTag==JJ</description>
+    <function>isAdjectiveModifier</function>
+    <first_action>ACTION_CLARIFY;R0.5</first_action>
+    <repeat_action>ACTION_ASK_REPHRASE_PART;R3.0</repeat_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isAsrOov()==false, depTag==NMOD|APPO and posTag==NN</description>
+    <function>isNounModifier</function>
+    <first_action>ACTION_CLARIFY;R0.6</first_action>
+    <repeat_action>ACTION_ASK_REPHRASE_PART;R3.0</repeat_action>
+  </dm_branch>
+
+<!--
+  <dm_branch>
+    <description>if errorSegment.isAsrOov()==false, neTag=LOCATION</description>
+    <function>isLocation</function>
+    <first_action>ACTION_CLARIFY;R0.1</first_action>
+    <repeat_action>ACTION_ASK_REPHRASE_PART;R3.0</repeat_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isAsrOov()==false, neTag==PERSON, depTag==OBJ</description>
+    <function>isObjectPerson</function>
+    <first_action>ACTION_CLARIFY;R0.2</first_action>
+    <repeat_action>ACTION_ASK_REPHRASE_PART;R3.0</repeat_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>if errorSegment.isAsrOov()==false, neTag==PERSON, depTag!=OBJ</description>
+    <function>isPerson</function>
+    <first_action>ACTION_CLARIFY;R0.3</first_action>
+    <repeat_action>ACTION_ASK_REPHRASE_PART;R3.0</repeat_action>
+  </dm_branch>
+-->
+
+  <dm_branch>
+    <description>if errorSegment.isAsrOov()==false, posTag==Verb</description>
+    <function>isVerb</function>
+    <first_action>ACTION_CLARIFY;R0.4</first_action>
+    <repeat_action>ACTION_ASK_REPHRASE_PART;R3.0</repeat_action>
+  </dm_branch>
+
+  <dm_branch>
+    <description>default action</description>
+    <function>isAlwaysTrue</function>
+    <first_action>ACTION_CLARIFY;R0.0</first_action>
+    <repeat_action>ACTION_ASK_REPHRASE_PART;R3.0</repeat_action>
+  </dm_branch>
+
+</branches>
